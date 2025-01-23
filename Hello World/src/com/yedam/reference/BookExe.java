@@ -24,7 +24,7 @@ public class BookExe {
 			case 1:// 전체목록
 				for (int i = 0; i < bookRepository.length; i++) {
 					if (bookRepository[i] != null) {
-						System.out.printf("%s\n", bookRepository[i]);
+						bookRepository[i].printInfo();
 					}
 				}
 				break;
@@ -38,33 +38,34 @@ public class BookExe {
 				System.out.println("판매가격을 입력>>");
 				int 판매가격 = Integer.parseInt(scn.nextLine());
 
-				System.out.println();
-
+				Book newBook = new Book(도서명, 저자, 출판사, 판매가격);
+				for (int i = 0; i < bookRepository.length; i++) {
+					if (bookRepository[i] == null) {
+						bookRepository[i] = newBook;
+						break;
+					}
+				}
 				System.out.print("등록완료");
 				break;
 
-				break;
 			case 3:// 조회(출판사)
 				System.out.println("출판사 입력>> ");
 				String searchPublisher = scn.nextLine();
 
 				for (int i = 0; i < bookRepository.length; i++) {
-					if (bookRepository[i] != null) {
-						if (bookRepository[i][2].equals(searchPublisher)) {
-							String 도서명 = bookRepository[i][0];
-							String 저자 = bookRepository[i][1];
-							String 출판사 = bookRepository[i][2];
-							String 판매가격 = bookRepository[i][3];
-							System.out.printf("%s %s %s %d \n", 도서명, 저자, 출판사, 판매가격);
-						}
+					if (bookRepository[i] != null && bookRepository[i]//
+							.bookPublisher.equals(searchPublisher)) {
+						bookRepository[i].printInfo();
 					}
 				}
+				break;
 
 			case 9:// 종료
 				System.out.println("프로그램을 종료합니다.");
 				run = false;
 				break;
 			default:
+				System.out.println("잘못된 메뉴 선택입니다.");
 			}// end of switch
 
 		} // end of while

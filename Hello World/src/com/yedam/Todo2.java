@@ -1,6 +1,5 @@
 package com.yedam;
 
-import java.security.cert.X509Certificate;
 import java.util.Scanner;
 
 /*

@@ -87,7 +87,7 @@ public class BoardExe {
 		int count = 0; // 전체진수.
 		for (int i = 0; i < boardRepo.length; i++) {
 			if (boardRepo[i] != null) {
-				count = i++;
+				count++;
 			}
 		}
 		return count;
@@ -97,23 +97,25 @@ public class BoardExe {
 		// 글 등록.
 		// 제목:5글자 이상 ~ 15글자 이하 . 콘솔출력 ( "등록할 수 없습니다.");
 		// 똑같은 제목이 있으면 콘솔출력 ("이미 등록된 제목입니다.");
-		int min = 4;
-		int max = 16;
+		int min = 5;
+		int max = 15;
 		System.out.print("제목을 입력하세요 >> ");
 		String title = scn.nextLine();
 		System.out.print("내용을 입력하세요 >> ");
 		String content = scn.nextLine();
-		if (title.length() > min || title.length() < max) {
+		if (title.length() <= min || title.length() >= max) {
+			System.out.println("등록할 수 없습니다.");
+			return;
+		}
 //		System.out.print("작성자를 입력하세요 >> ");
 //		String writer = scn.nextLine();
 //		System.out.print("작성일자를 입력하세요 >> ");
 //		String writeDate = scn.nextLine();
 			// 배열의 빈 공간에 등록.
 			for (int i = 0; i < boardRepo.length; i++) {
-
 				if (boardRepo[i] == null) {
 					for (int j = 0; j < boardRepo.length; j++) {
-						if (boardRepo[j].getTitle().equals(title)) {							
+						if (boardRepo[j] != null && boardRepo[j].getTitle().equals(title)) {
 							System.out.println("이미 등록된 제목입니다.");
 							return;
 						}
@@ -123,10 +125,7 @@ public class BoardExe {
 					break; // 한건만 등록
 				}
 			}
-		} else {
-			System.out.println("등록할 수 없습니다.");
-		}
-
+		
 	}// end of addBoard
 
 	public static void removeBoard() {

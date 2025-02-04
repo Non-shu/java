@@ -3,89 +3,105 @@ package com.yedam;
 import java.util.Scanner;
 
 public class ForLoop2 {
+
 	public static void main(String[] args) {
-//		String[] infoAry = "홍길동, 80".split(",");
+//		String[] infoAry = "홍길동,80,85".split(",");
 //		System.out.println(infoAry[0]);
-//		System.out.println(Integer.parseInt("80")*Integer.parseInt("70"));
-//	ex1)System.out.println("이름, 점수 값을 입력");
-//		String userVal = scn.nextLine();
-//		String[] teamAry = userVal.split(",");
-//		System.out.printf("이름은 홍길동이고 점수는 80입니다.", teamAry[0],teamAry[1]); // end of ex1)
+//		System.out.println(infoAry[1]);
+//		System.out.println(infoAry[2]);
+
+//		System.out.println(Integer.parseInt(infoAry[1]));
+
+//		String[] strAry = new String[10];
+//		strAry[0] = "홍길동";
+//		String name = "김길동";
+//		for (int i = 0; i < strAry.length; i++) {
+//			if (strAry[i] == null) { // 빈공간에 등록 후 반복문 종료.
+//				strAry[i] = name;
+//				break;
+//			}
+//		}
+//
+//		for (int i = 0; i < strAry.length; i++) {
+//			if (strAry[i] != null) {
+//				System.out.println(strAry[i]);
+//			}
+//		}
 		Scanner scn = new Scanner(System.in);
-
-//		System.out.println("이름 입력> "); // 조회 방법
+//		System.out.println("이름 입력>>");
 //		String searchName = scn.nextLine();
-//		System.out.println("박우식".equals(searchName)); //"박우식" == searchName 
+//		System.out.println("박우식".equals(searchName)); // "박우식" == searchName
 
-		String[] studentAry = new String[100];// ("","","")
-		studentAry[0] = "고길동,99";
-		studentAry[1] = "도우너,61";
-		studentAry[2] = "희동이,79";
-		studentAry[3] = "박우식,71";
+		String[] studentAry = new String[100]; // {"","",""}
+		studentAry[0] = "홍길동,80";
+		studentAry[1] = "김민수,70";
+		studentAry[2] = "박우식,85";
 
 		boolean run = true;
 
 		while (run) {
-			System.out.println("1.학생이름,점수 2.최고점수 3.학생입력(한건씩) 4.점수조회(이름)9.종료");
+			System.out.println("1.학생이름,점수 2.최고점수 3.학생입력(한건씩) 4.점수조회(이름) 9.종료");
 			System.out.print("선택하세요> ");
 			int menu = Integer.parseInt(scn.nextLine());
 
 			switch (menu) {
-			case 1: // 학생이름 점수
+			case 1: // 학생이름,점수
 				for (int i = 0; i < studentAry.length; i++) {
-					System.out.print("이름, 점수 값을 입력하세요>> ex)홍길동,85> ");
+					System.out.print("이름,점수 값을 입력하세요>> ex)홍길동,85 ");
 					studentAry[i] = scn.nextLine();
-
 				}
-				System.out.println("등록정보");
+				System.out.println("등록완료!");
 				break;
-			case 2: // 최고점수
+			case 2: // 최고점수 출력.
 				int max = 0;
 				for (int i = 0; i < studentAry.length; i++) {
-					if (studentAry[i] != null) { // 값이 있을 경우, 밑의 함수를 계산하시오-
-						int name = Integer.parseInt(studentAry[i].split(",")[1]);
-						if (max < name) {
-							max = name;
-							break;
+					if (studentAry[i] != null) { // 값이 있을 경우.
+						int temp = Integer.parseInt(studentAry[i].split(",")[1]);
+						if (max < temp) {
+							max = temp;
 						}
 					}
 				}
 				System.out.printf("최고점수는 %d\n", max);
 				break;
-			case 3: // 한칸씩 입력하기.
-				System.out.println("이름, 점수 값을 입력 하세요 >> ex)고길동,99");
+			case 3: // 한건씩 입력하기.
+				System.out.println("이름,점수 값을 입력하세요>> ex)홍길동,85 ");
 				for (int i = 0; i < studentAry.length; i++) {
-					if (studentAry[i] == null) {// 빈 공간에 등록 후 반복문 종료.
+					if (studentAry[i] == null) { // 빈공간에 등록 후 반복문 종료.
 						studentAry[i] = scn.nextLine();
 						break;
 					}
 				}
 				break;
-			case 4: // 조회 (이름)
-				System.out.println("이름 입력> ");
+
+			case 4: // 이름검색 후 점수출력.
+				System.out.println("이름을 입력하세요.");
 				String searchName = scn.nextLine();
-				int ab = 0;
+
 				for (int i = 0; i < studentAry.length; i++) {
-					if (studentAry[i] != null) {
-						if(studentAry[i].split(",")[0].equals(searchName)) {
-						ab =Integer.parseInt(studentAry[i].split(",")[1]);
-							//System.out.println("".equals(searchName)); // "" == searchName
-							System.out.printf("%s의 점수 %d점\n", searchName, ab);
-						}break;//for 구문의 break
+					if (studentAry[i] != null) { // 빈공간에 등록 후 반복문 종료.
+						if (studentAry[i].split(",")[0].equals(searchName)) {
+							System.out.printf("%s의 점수는 %s입니다.\n", //
+									studentAry[i].split(",")[0], //
+									studentAry[i].split(",")[1]);
+							break; // for구문의 break;
+						}
 					}
 				}
-				break; // switch 구문의 break 
-			case 9: // 종료
+				break; // switch구문의 break;
+
+			case 9:
 				System.out.println("프로그램을 종료합니다.");
 				run = false;
 				break;
 			default:
-				System.out.println("메뉴를 다시 선택하세요");
-			}// switch 종료
+				System.out.println("메뉴를 다시 선택하세요.");
+			}
 
-		} // end of while
+		} // end of while.
 
-		System.out.println("end of prog");
-	}// end of main
+		System.out.println("end of prog.");
 
-}// end of class
+	} // end of main.
+
+} // end of class.

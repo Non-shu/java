@@ -1,7 +1,8 @@
 package com.yedam.inheritance;
 
-public class MysqlDao {
-public void insert() {
+public class MysqlDao extends Dao{
+	
+public void register() {
 	System.out.println("등록기능");
 	}
 
@@ -11,5 +12,11 @@ public void insert() {
 
 	public void search() {
 		System.out.println("조회기능.");
+	}
+
+	@Override
+	public void remove() {
+		// TODO Auto-generated method stub
+		
 	}
 }

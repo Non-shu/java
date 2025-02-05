@@ -9,7 +9,7 @@ public class Friend {
 	// 필드.
 	private String friendName;
 	private String phoneNumber;
-	private BloodType btype;
+//	private BloodType btype;
 
 	// 생성자.
 	public Friend(String friendName, String phoneNumber) {
@@ -39,12 +39,12 @@ public class Friend {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public BloodType getBtype() {
-		return btype;
-	}
-
-	public void setBtype(BloodType btype) {
-		this.btype = btype;
-	}
+//	public BloodType getBtype() {
+//		return btype;
+//	}
+//
+//	public void setBtype(BloodType btype) {
+//		this.btype = btype;
+//	}
 
 }

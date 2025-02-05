@@ -17,7 +17,7 @@ public class Student {
 		this.engScore = engScore;
 	}
 
-	Student(String studentName, int engScore, int mathScore) {
+	public Student(String studentName, int engScore, int mathScore) {
 		this.mathScore = mathScore;
 		this.engScore = engScore;
 		this.studentName = studentName;

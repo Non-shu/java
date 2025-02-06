@@ -9,13 +9,6 @@ public class Member {
 	private String password;
 	private String memberName;
 
-	// 생성자.
-	public Member(String memberId, String password, String memberName) {
-		this.memberId = memberId;
-		this.password = password;
-		this.memberName = memberName;
-	}
-
 	// 메소드.
 	public String getMemberId() {
 		return memberId;

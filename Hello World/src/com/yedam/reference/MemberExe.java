@@ -15,9 +15,9 @@ public class MemberExe {
 	}
 
 	static Member[] members = { //
-			new Member("user01", "1111", "홍길동"), //
-			new Member("user02", "2222", "김민수"), //
-			new Member("user03", "3333", "박석민") };
+			new Member(), //
+			new Member(), //
+			new Member() };
 
 	// 기본생성자. MemberExe(){}
 	public static String login(String id, String password) {
@@ -31,3 +31,4 @@ public class MemberExe {
 		return null; // 일치하는 값이 없음.
 	} // end of login().
 }
+

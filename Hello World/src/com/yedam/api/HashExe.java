@@ -8,6 +8,8 @@ public class HashExe {
 		// 컬렉션(List, Set, Map)
 		// set: 중복된 값은 저장 못함
 		// HashCode + equals => 판단.
+	
+		
 		Set<Member> set = new HashSet<Member>();
 		set.add(new Member("user01", 100));
 		set.add(new Member("user01", 100));

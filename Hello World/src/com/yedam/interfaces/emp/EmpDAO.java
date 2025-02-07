@@ -3,6 +3,8 @@ package com.yedam.interfaces.emp;
  * 등록, 수정, 삭제, 조회. 
  */
 
+import java.util.List;
+
 public interface EmpDAO {
 	
 	
@@ -15,5 +17,5 @@ public interface EmpDAO {
 	//삭제
 	public boolean removeEmp(int empNo);
 	//조회
-	public Employee[] search(Employee emp);
+	public List<Employee> search(Employee emp);
 }

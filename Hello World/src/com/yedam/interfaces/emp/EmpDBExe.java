@@ -1,5 +1,6 @@
 package com.yedam.interfaces.emp;
 
+import java.awt.BorderLayout;
 import java.security.interfaces.RSAKey;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -57,9 +58,11 @@ public class EmpDBExe implements EmpDAO {
 	@Override
 	public List<Employee> search(Employee emp) {
 		List<Employee> empList = new ArrayList<>();
+		String qry = "select * from tbl_employees " +"where emp_name = nvl('"+emp.getEmpName()+ "',  emp_name)" 
+				+ " order by emp_no";
 		try {
 		Statement stmt = getConnect().createStatement();
-		ResultSet rs = stmt.executeQuery("select * from tbl_employees");
+		ResultSet rs = stmt.executeQuery(qry);
 		while(rs.next()) {
 			Employee empl = new Employee();
 			empl.setEmpNo(rs.getInt("emp_no"));
